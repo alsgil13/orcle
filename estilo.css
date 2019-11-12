@@ -30,3 +30,50 @@
     font-style: italic;
 
 }
+
+.profilepic{
+    display:block;
+    margin: 5px;
+    width: 60%;
+    height: 30%;
+    border-radius: 52%;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.profile-info{
+    border: solid;
+    position: absolute;
+    width: 20%;
+    height: 70%;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.mybutton{
+    border-radius: 5%;
+    width: 60%;
+    border: none;
+    background: rgba(71, 112, 117, 0.918);
+    color: white;
+}
+
+.textoprofile{
+    color: rgba(71, 112, 117, 0.918);
+    text-shadow: 1px 1px white;
+    padding: 1px;
+    margin:0;
+    margin-left: 5%;
+}
+
+.disponivel{
+    color: rgb(59, 255, 75);
+    text-shadow: 1px 1px black;
+}
+
+.indisponivel{
+    color: rgb(255, 59, 59);
+    text-shadow: 1px 1px black;
+}
