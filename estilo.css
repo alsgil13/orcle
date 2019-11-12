@@ -56,13 +56,11 @@
 
 .evento{
     margin-top: 1%;
-
     height: 12%;
     width: 90%;
     margin: auto;
     background-color: aliceblue;
     /* border-color:rgba(71, 112, 117, 0.918);
-    
     border-style: groove; */
     border-radius: 13px;
     color: rgba(71, 112, 117, 0.918);
@@ -78,6 +76,7 @@
 }
 
 .eventotext{
+    padding: 2%;
     margin-top: 2%;
 }
 .profilepic{
