@@ -1,0 +1,233 @@
+<html>
+  <head>
+    <!--Carrega a  API AJAX pela web-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!--Carregar a  API AJAX Localmente-->
+    <!-- <script type="text/javascript" src="googlechart.js"></script> -->
+        
+  
+
+    <style>
+      HTML{
+        scroll-behavior:smooth;
+      }      
+      body{
+        text-align: center;
+      }
+      td{
+        font-size: 20px;
+      }
+      th{
+        font-size: 22px;
+      }
+
+      #menulateral {
+        position: fixed;
+        right: 0em;
+        top: 35%;
+        vertical-align: middle;
+        margin-top: -2.5em;
+        list-style-type:none;
+        /* background-color: rgba(0, 17, 116, 0.233); */
+        text-align:right;
+      }
+      
+      #menulateral a{
+        text-decoration: none;
+        color: white;
+        text-shadow: 2px 1px  rgba(0, 0, 0, 0.973);
+      }
+
+      #menulateral li{
+        border: solid;
+        border-width: 2px;
+        border-color: white;
+        border-radius: 5px;
+        width: 7em;
+        font-size: 20px;
+        font-weight: 700;
+        background-color: rgba(82, 82, 82, 0.685);
+        padding: 2px;
+      }
+
+      #menulateral li a:hover{
+        color: rgb(0, 2, 117);
+        text-shadow: 2px 2px rgba(204, 204, 204, 0.233);
+      }      
+
+      .titlulo{
+        text-align: center;
+      }
+
+      .grafico{
+        border: 4px;
+        border-style:groove;
+        border-color: rgba(129, 126, 126, 0.37);
+        border-radius: 10px;
+
+      }
+      .wide{
+        /* background-color: red; */
+        width: 80%;
+        height: 80%;
+        overflow:visible;
+        vertical-align: middle;
+        align-self: center;
+        margin: auto;        
+      }
+
+      .halfwide{
+        margin-top: 5%;
+        /* background-color: blue; */
+        width: 45%;
+        padding: 0px;
+        margin: 0px;
+        height: 50%;
+        display:inline-block;
+        overflow:visible;
+        margin: auto;
+        vertical-align: middle;        
+
+      }
+
+      
+      .contenedorfull{
+        display: block;
+      }
+
+      .contenedor{
+        display: inline-block;
+        padding-top: 10%;
+        /* background-color: yellow;
+        border-width: 5px;
+        border-style: groove;
+        border-color: chocolate; */
+        text-align: center;
+        width: 80%;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+
+    
+    </style>
+
+
+  </head>
+
+  <body>
+
+
+      
+      <!--Gráficos e Tabelas-->
+
+      <div class="contenedor" id="graduacao">
+        <h2 class="titlulo">Seção 1</h2><br>
+        <div class="grafico halfwide"></div>
+        <div class="halfwide" ></div>
+      </div>
+      <div class="contenedor" id="posgraduacao">
+        <h2>Seção 2</h2>
+        <div class="grafico halfwide"></div>
+        <div class="halfwide"></div>
+      </div>
+      <div class="contenedor" id="docentes">
+        <h2>Seção 3</h2>
+        <div class="grafico halfwide"></div>
+        <div class="halfwide"></div>
+      </div>
+      <div class="contenedor" id="funcionarios">
+        <h2>Seção 4</h2>
+        <div class="grafico halfwide"></div>
+        <div class="halfwide"></div>
+      </div>
+      <div class="contenedor" id="posdoc">
+        <h2>Seção 5</h2>
+        <div class="grafico halfwide"></div>
+        <div class="halfwide"></div>
+      </div>
+      <div class="contenedor" id="area">
+        <h2>Seção 6</h2>
+        <div class="grafico halfwide"></div>
+        <div class="halfwide"></div>
+      </div>
+      <div id="titulosconcedidos"></div>
+      <h2>Seção 7</h2>
+      <div class="contenedorfull">
+        <div class="grafico wide"></div>
+      </div>
+      <br><br>
+      <div class="contenedorfull">
+        <div class="wide"></div>
+      </div>
+
+      <!-- <div id="titulosconcedidos" class="contenedor">
+          <h2> Títulos de Graduação Concedidos </h2>
+          <div id="chart_titgrad" class="grafico halfwide"></div>
+          <div id="table_titgrad" class="halfwide"></div>
+      </div> -->
+  
+
+
+      <div id="titulosconcedidospos" class="contenedor">
+        <h2> Trabalhos de Pós-Graduação Defendidos </h2>
+        <div id="chart_titpos" class="grafico halfwide"></div>
+        <div id="table_titpos" class="halfwide"></div>
+      </div>
+
+      <!---------------------------------------->
+    <!-- MENU -->
+    <ul id=menulateral>
+        <li><a href="#graduacao">Seção 1</a></li>
+        <li><a href="#posgraduacao">Seção 2</a></li>
+        <li><a href="#docentes">Seção 3</a></li>
+        <li><a href="#funcionarios">Seção 4</a></li>
+        <li><a href="#posdoc">Seção 5</a></li>
+        <li><a href="#area">Seção 6</a></li>
+        <li><a href="#titulosconcedidos">Seção 7</a></li>
+        <li><a href="#titulosconcedidospos">Seção 8</a></li>
+            
+    </ul>
+
+  </body>
+</html>
+
+
+
+
+<!-- 
+<ul id="list-category-team"> 
+  <li><a href="/comissoes/culturaeextensao/culturaeextensao_PRCEU.php">Apresentação</a></li>
+  <li><a href="/comissoes/culturaeextensao/culturaeextensao_CoCEx.php">Composição</a>
+    <ul style=" list-style-type: none">
+      <li><a href="#">Administração</a></li>
+      <li><a href="#">Departamento de Biologia</a></li>
+      <li><a href="#">Departaqmento de Computação e Matemática</a></li>
+      <li><a href="#">Departamento de Educação, Informação e Comunicação</a></li>
+      <li><a href="#">Departamento de Física</a></li>
+      <li><a href="#">Departamento de Música</a></li>
+      <li><a href="#">Departamento de Psicologia</a></li>
+      <li><a href="#">Departamento de Química</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+                            
+<h3 class="title-faq ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-1-header-0" aria-controls="ui-accordion-1-panel-0" aria-selected="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Brigada de Incêndio</h3>
+<div class="content-faq ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="display: none;" id="ui-accordion-1-panel-0" aria-labelledby="ui-accordion-1-header-0" role="tabpanel" aria-expanded="false" aria-hidden="true">
+  <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum facilisis sodales. Donec a dui in diam dapibus tincidunt. Sed non viverra neque. Maecenas eros odio, vulputate nec mollis id, lobortis vitae tortor. Nulla eget neque molestie, dictum arcu at, finibus leo. Fusce volutpat sem a elit tincidunt, vitae cursus erat scelerisque. Cras turpis dolor, consequat a elit ac, mollis dapibus ante. Mauris a turpis faucibus, tempus nisl in, aliquam nisl. Morbi congue hendrerit ultricies. Ut et velit est. Vestibulum leo lacus, commodo ut nulla quis, dignissim finibus dui. Vivamus cursus vehicula venenatis. Vivamus vitae eros placerat, euismod justo quis, rutrum neque. Praesent tincidunt quis tortor sit amet interdum. Sed ac rutrum metus.
+    Morbi tempus ultrices erat bibendum pretium. Mauris ac massa a enim feugiat tristique. Pellentesque non ultrices ante. Praesent elit nunc, vulputate id enim ac, dictum maximus nibh. Donec suscipit metus eu interdum placerat. Proin hendrerit tellus a enim efficitur laoreet. Aliquam ac ipsum lacinia, fringilla purus ac, rutrum orci. Duis id finibus velit. Quisque vehicula justo in eros dictum, vel pretium odio interdum. Sed convallis neque id posuere iaculis. Praesent id nunc metus. Phasellus interdum mi et lorem sollicitudin facilisis. </p>
+</div>
+<h3 class="title-faq ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-1-header-1" aria-controls="ui-accordion-1-panel-1" aria-selected="false" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Brigada de Incêndio</h3>
+<div class="content-faq ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="display: none;" id="ui-accordion-1-panel-1" aria-labelledby="ui-accordion-1-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true">
+  <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum facilisis sodales. Donec a dui in diam dapibus tincidunt. Sed non viverra neque. Maecenas eros odio, vulputate nec mollis id, lobortis vitae tortor. Nulla eget neque molestie, dictum arcu at, finibus leo. Fusce volutpat sem a elit tincidunt, vitae cursus erat scelerisque. Cras turpis dolor, consequat a elit ac, mollis dapibus ante. Mauris a turpis faucibus, tempus nisl in, aliquam nisl. Morbi congue hendrerit ultricies. Ut et velit est. Vestibulum leo lacus, commodo ut nulla quis, dignissim finibus dui. Vivamus cursus vehicula venenatis. Vivamus vitae eros placerat, euismod justo quis, rutrum neque. Praesent tincidunt quis tortor sit amet interdum. Sed ac rutrum metus.
+    Morbi tempus ultrices erat bibendum pretium. Mauris ac massa a enim feugiat tristique. Pellentesque non ultrices ante. Praesent elit nunc, vulputate id enim ac, dictum maximus nibh. Donec suscipit metus eu interdum placerat. Proin hendrerit tellus a enim efficitur laoreet. Aliquam ac ipsum lacinia, fringilla purus ac, rutrum orci. Duis id finibus velit. Quisque vehicula justo in eros dictum, vel pretium odio interdum. Sed convallis neque id posuere iaculis. Praesent id nunc metus. Phasellus interdum mi et lorem sollicitudin facilisis. </p>
+</div>
+<h3 class="title-faq ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top" role="tab" id="ui-accordion-1-header-2" aria-controls="ui-accordion-1-panel-2" aria-selected="true" tabindex="1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Administração</h3>
+<div class="content-faq ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" style="display: block;" id="ui-accordion-1-panel-2" aria-labelledby="ui-accordion-1-header-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
+  <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum facilisis sodales. Donec a dui in diam dapibus tincidunt. Sed non viverra neque. Maecenas eros odio, vulputate nec mollis id, lobortis vitae tortor. Nulla eget neque molestie, dictum arcu at, finibus leo. Fusce volutpat sem a elit tincidunt, vitae cursus erat scelerisque. Cras turpis dolor, consequat a elit ac, mollis dapibus ante. Mauris a turpis faucibus, tempus nisl in, aliquam nisl. Morbi congue hendrerit ultricies. Ut et velit est. Vestibulum leo lacus, commodo ut nulla quis, dignissim finibus dui. Vivamus cursus vehicula venenatis. Vivamus vitae eros placerat, euismod justo quis, rutrum neque. Praesent tincidunt quis tortor sit amet interdum. Sed ac rutrum metus.
+    Morbi tempus ultrices erat bibendum pretium. Mauris ac massa a enim feugiat tristique. Pellentesque non ultrices ante. Praesent elit nunc, vulputate id enim ac, dictum maximus nibh. Donec suscipit metus eu interdum placerat. Proin hendrerit tellus a enim efficitur laoreet. Aliquam ac ipsum lacinia, fringilla purus ac, rutrum orci. Duis id finibus velit. Quisque vehicula justo in eros dictum, vel pretium odio interdum. Sed convallis neque id posuere iaculis. Praesent id nunc metus. Phasellus interdum mi et lorem sollicitudin facilisis. </p>
+</div>
+     -->
