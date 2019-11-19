@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class TipoItem(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome tipo de objeto')
     descricao = models.TextField(max_length=1000, help_text='Insirta uma breve descrição do objeto')
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.nome}'    
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, primary_key=True)
