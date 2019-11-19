@@ -28,7 +28,6 @@
     text-align: center;
     padding: 2%;
     font-style: italic;
-
 }
 
 
@@ -59,7 +58,7 @@
     height: 12%;
     width: 90%;
     margin: auto;
-    background-color: aliceblue;
+    background-color: white;
     /* border-color:rgba(71, 112, 117, 0.918);
     border-style: groove; */
     border-radius: 13px;
@@ -68,7 +67,7 @@
 
 .tinypic{
     margin: 15px;
-    width: 10%;
+    width: 8%;
     height: 60%;
     border-radius: 52%;
     float: left;
@@ -79,6 +78,30 @@
     padding: 2%;
     margin-top: 2%;
 }
+
+.eventoopt{
+    visibility: visible; 
+    background-color: white;
+    
+    float: right;
+    display: relative;
+    width: 30px;
+    height: 40%;
+    border-radius: 13px;
+    
+
+}
+
+.eventoopt:hover{
+    background-color: rgba(168, 252, 182, 0.514);
+    background-image: url("img/watching.png");
+    background-size: cover;
+    margin: 2px;
+    
+
+}
+
+
 .profilepic{
     display:block;
     margin: 5px;
@@ -101,13 +124,16 @@
     width: 100%;
     border: none;
     background: rgba(71, 112, 117, 0.918);
-    color: rgb(68, 68, 235);
+    color: rgba(157, 228, 238, 0.918);
     margin-top: 3px;
     font-weight: 700;
-    text-shadow: 1px 1px black;
+    text-shadow: 1px 1px rgb(119, 52, 243);
 }
 
-
+.mybutton:hover{
+    color: rgb(119, 52, 243);
+    text-shadow: 1px 1px rgba(157, 228, 238, 0.918);;
+}
 
 .disponivel{
     color: rgb(59, 255, 75);
