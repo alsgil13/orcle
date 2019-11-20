@@ -12,12 +12,15 @@ class TipoItem(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, primary_key=True)
     dt_nasc = models.DateField()
-    cep = models.CharField(max_length=8, help_text='Digite o CEp do seu endereço')
+    cep = models.CharField(max_length=8, help_text='Digite o CEP do seu endereço')
     cidade = models.CharField(max_length=200)
     estado = models.CharField(max_length=2)
     pais = models.CharField(max_length=50)
     foto = models.ImageField(upload_to = 'profile_pics/', default = 'profile_pics/no-image-icon.png')
-    
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.user.first_name} {self.user.last_name}'   
+
 class Item(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome do objeto')
     autor = models.CharField(max_length=200, help_text='Digite o nome do autor, cantor, banda, criador, marca etc...')
@@ -38,7 +41,9 @@ class Item(models.Model):
     )
     dtCadastro = models.DateTimeField(auto_now_add=True)
 
-
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.tipo.nome}: {self.autor} - {self.nome} '
 
 
 class Emprestimo(models.Model):
@@ -47,12 +52,13 @@ class Emprestimo(models.Model):
     pessoa = models.ForeignKey('Profile', on_delete=models.CASCADE)
     dtDevolucao = models.DateField()
     aberto = models.BooleanField()
+    dtCadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['dtDevolucao']
+        ordering = ['dtCadastro']
 
     def __str__(self):
         """String for representing the Model object."""
-        return f'{self.item.nome} ({self.pessoa.first_name} {self.pessoa.last_name})'
+        return f'{self.item.dono.user.first_name} {self.item.dono.user.last_name} emprestou o {self.item} para {self.pessoa.user.first_name} {self.pessoa.user.last_name}'
 
 

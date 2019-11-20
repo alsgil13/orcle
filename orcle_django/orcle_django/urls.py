@@ -31,3 +31,10 @@ urlpatterns += [
 urlpatterns += [
     path('', RedirectView.as_view(url='/borrows/')),
 ]
+
+from . import settings
+from borrows import views
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+ 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
