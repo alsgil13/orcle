@@ -1,7 +1,14 @@
 button{
-    border-radius: 7px;
-    min-width: 150px;
+    /* border-radius: 7px; */
+    min-width: 200px;
+    min-height: 50px;
+    margin: -2px;
+    padding: 0;
 
+}
+
+header{
+    margin-bottom: 1em;
 }
 
 .main{
@@ -21,10 +28,15 @@ button{
     font-size: 900%;
     color:white;
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom:0;
+}
+
+.banner p{
+    margin-bottom: 0;
 }
 
 .footer{
+
     position:absolute;
     bottom: 0;
     display: block;
@@ -150,4 +162,10 @@ button{
 .indisponivel{
     color: rgb(255, 59, 59);
     text-shadow: 1px 1px black;
+}
+
+
+.logo{
+    margin: 20px;
+    padding: 10px;
 }
