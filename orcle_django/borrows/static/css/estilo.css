@@ -1,9 +1,10 @@
 button{
-    /* border-radius: 7px; */
+    border-radius: 2px;
     min-width: 200px;
     min-height: 50px;
     margin: -2px;
     padding: 0;
+    font-weight: 600;
 
 }
 
