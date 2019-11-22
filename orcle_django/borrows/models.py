@@ -16,7 +16,7 @@ class Profile(models.Model):
     cidade = models.CharField(max_length=200)
     estado = models.CharField(max_length=2)
     pais = models.CharField(max_length=50)
-    foto = models.ImageField(upload_to = 'profile_pics/', default = 'profile_pics/no-image-icon.png')
+    foto = models.ImageField(upload_to = 'media/profile_pics/', default = 'media/profile_pics/no-image-icon.png')
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.user.first_name} {self.user.last_name}'   
@@ -27,7 +27,7 @@ class Item(models.Model):
     descricao = models.TextField(max_length=1000, help_text='Insirta uma breve descrição do objeto')
     dono = models.ForeignKey('Profile', on_delete=models.CASCADE)
     tipo = models.ForeignKey('TipoItem', on_delete=models.SET_NULL, null=True)
-    foto = models.ImageField(upload_to = 'item_pics/', default = 'item_pics/no-image-icon.png')
+    foto = models.ImageField(upload_to = 'media/item_pics/', default = 'media/item_pics/no-image-item.png')
     LOAN_STATUS = (
         ('e', 'Emprestado'),
         ('i', 'Indisponível'),

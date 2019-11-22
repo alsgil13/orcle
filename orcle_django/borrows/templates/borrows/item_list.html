@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="row d-flex justify-content-center titulo_secao">
+    <div class=".col-md-6 .offset-md-3 text-center">
+        <span class="">Itens Disponíveis</span>
+    </div>
+    
+  </div>
+  {% if item_list %}
+  <ul>
+    {% for item in item_list %}
+      <li>
+          <div class="row ">
+                <div class="col  item_contenedor">
+                    <img class="item_pic" src="{{ item.foto.url }}">
+                    <a href="/borrows/item/{{ item.id }}" >
+                        <p class="nome_item">   {{ item }}</p>
+                        <p class="dono_item"> 
+                            Pertence a:  {{ item.dono.user.first_name }} {{ item.dono.user.last_name }} <br>
+                            Status: <span class="{% if item.status == 'd' %}text-success{% elif item.status == 'i' %}text-danger{% else %}text-warning{% endif %}">{{ item.get_status_display }}</span>
+                        </p>
+                        
+
+                    </a>
+                </div>
+
+          </div>
+
+
+
+
+
+
+
+
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Nenhum item disponível.</p>
+  {% endif %}       
+{% endblock %}
