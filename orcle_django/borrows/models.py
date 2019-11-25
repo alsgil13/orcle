@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 # Create your models here.
 class TipoItem(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome tipo de objeto')
@@ -21,13 +25,24 @@ class Profile(models.Model):
         """String for representing the Model object."""
         return f'{self.user.first_name} {self.user.last_name}'   
 
+#Integração do Profile com User
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
+
+
 class Item(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome do objeto')
     autor = models.CharField(max_length=200, help_text='Digite o nome do autor, cantor, banda, criador, marca etc...')
     descricao = models.TextField(max_length=1000, help_text='Insirta uma breve descrição do objeto')
     dono = models.ForeignKey('Profile', on_delete=models.CASCADE)
     tipo = models.ForeignKey('TipoItem', on_delete=models.SET_NULL, null=True)
-    foto = models.ImageField(upload_to = 'media/item_pics/', default = 'media/item_pics/no-image-item.png')
+    foto = models.ImageField(upload_to = 'item_pics', default = 'item_pics/no-image-item.png')
     LOAN_STATUS = (
         ('e', 'Emprestado'),
         ('i', 'Indisponível'),

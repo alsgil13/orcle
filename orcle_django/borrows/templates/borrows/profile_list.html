@@ -16,8 +16,8 @@
   <ul>
     {% for perfil in profile_list %}
       <li>
-          <div class="row ">
-                <div class="col  item_contenedor">
+          <div class="row">
+                <div class="col item_contenedor">
                     <img class="item_pic" src="{{ perfil.foto.url }}">
                     <a href="/borrows/pessoa/{{ perfil.user.id }}" >
                         <p class="nome_item">   {{ perfil }}</p>

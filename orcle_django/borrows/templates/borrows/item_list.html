@@ -25,7 +25,10 @@
                             Pertence a:  {{ item.dono.user.first_name }} {{ item.dono.user.last_name }} <br>
                             Status: <span class="{% if item.status == 'd' %}text-success{% elif item.status == 'i' %}text-danger{% else %}text-warning{% endif %}">{{ item.get_status_display }}</span>
                         </p>
+
                     </a>
+                    <a href="/borrows/item/{{item.id}}/update"><button class="btn btn-warning">Alterar</button></a>
+                    <a href="/borrows/item/{{item.id}}/delete"><button class="btn btn-danger">Excluir</button></a>
                 </div>
 
           </div>

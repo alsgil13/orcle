@@ -32,6 +32,10 @@ urlpatterns += [
     path('', RedirectView.as_view(url='/borrows/')),
 ]
 
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+
 from . import settings
 from borrows import views
 from django.contrib.staticfiles.urls import static
