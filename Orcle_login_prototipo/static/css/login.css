@@ -1,0 +1,48 @@
+body{
+    background-color: rgba(157, 228, 238, 0.918);
+    text-align: center;
+}
+
+form{
+    padding: 5% 30%;
+}
+
+h3{
+    padding-top: 10%;
+}
+
+.banner{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: block;
+    background-color: rgba(71, 112, 117, 0.918);
+    width: 100%;
+    height: 20%;
+    font-size: 900%;
+    color:white;
+    text-align: center;    
+}
+
+.footer{
+    bottom: 0;
+    display: block;
+    background-color: rgba(71, 112, 117, 0.918);
+    width: 100%;
+    height: 10%;
+    color:white;
+    text-align: center;
+    padding: 2%;
+    font-style: italic;
+
+}
+
+.foto{
+    display: inline-block;
+    border: solid 1px;
+    width: 20%;
+    height:25%;
+    margin: 3%;
+}
+
+.btn{
+    margin: 5%; 
+}
