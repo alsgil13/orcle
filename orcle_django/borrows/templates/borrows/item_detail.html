@@ -1,5 +1,10 @@
 {% extends "base_generic.html" %}
 
+
+{% block menu %}
+  {% include "menu-bootstrap.html" %}
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
@@ -7,6 +12,7 @@
 
 
         <img class="detalhes_item_pic" src="{{ item.foto.url }}">
+        <p> </p>
         <p><strong>Tipo: {{ item.tipo.nome }} </strong></p>
 
         <p><strong>Título: </strong>{{ item.nome }}</p>
@@ -15,8 +21,9 @@
     
     </div>
 </div>
-
+<hr>
 <div class="row">
+
         <div style="margin-left:20px;margin-top:20px">
                 <h4>Emprestimos já feitos</h4>
             

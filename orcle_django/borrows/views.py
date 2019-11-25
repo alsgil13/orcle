@@ -6,6 +6,11 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html')
 
+def sobre(request):
+    
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'sobre.html')
+
 from django.views import generic
 
 
@@ -14,3 +19,9 @@ class ItemListView(generic.ListView):
 
 class ItemDetailView(generic.DetailView):
     model = Item    
+
+class PessoaListView(generic.ListView):
+    model = Profile    
+
+class PessoaDetailView(generic.DetailView):
+    model = Profile        

@@ -1,5 +1,10 @@
 {% extends "base_generic.html" %}
 
+
+{% block menu %}
+  {% include "menu-bootstrap.html" %}
+{% endblock %}
+
 {% block content %}
   <div class="row d-flex justify-content-center titulo_secao">
     <div class=".col-md-6 .offset-md-3 text-center">
@@ -20,20 +25,10 @@
                             Pertence a:  {{ item.dono.user.first_name }} {{ item.dono.user.last_name }} <br>
                             Status: <span class="{% if item.status == 'd' %}text-success{% elif item.status == 'i' %}text-danger{% else %}text-warning{% endif %}">{{ item.get_status_display }}</span>
                         </p>
-                        
-
                     </a>
                 </div>
 
           </div>
-
-
-
-
-
-
-
-
       </li>
     {% endfor %}
   </ul>
