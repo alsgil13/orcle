@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from borrows.models import TipoItem, Item, Profile, Emprestimo
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -15,7 +16,32 @@ def sobre(request):
 
 from django.views import generic
 
+@login_required
+def perfil(request):
+    usuario = Profile.objects.get(pk=request.user)
+    itens = Item.objects.filter(dono=request.user)
+    nome = request.user.first_name + " " + request.user.last_name
+    dt_nasc = usuario.dt_nasc
+    foto = usuario.foto.url
 
+    listaitens = []
+    for i in itens:
+        dados = {
+            'item': i
+        }
+        listaitens.append(i)
+    #Criar Contexto
+    context = {
+        'nome'   : nome,
+        'dt_nasc' : dt_nasc,
+        'foto' : foto,
+        'itens' : listaitens,
+    }
+
+    return render(request, 'meuperfil.html', context=context)
+
+
+from django.views import generic
 
 class MeusItensListView(LoginRequiredMixin, generic.ListView):
     model = Item   

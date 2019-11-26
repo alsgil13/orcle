@@ -9,6 +9,7 @@ urlpatterns = [
     path('pessoas/', views.PessoaListView.as_view(), name='pessoas'),
     path('pessoa/<int:pk>', views.PessoaDetailView.as_view(), name='pessoa-detail'),    
     path('sobre', views.sobre, name='sobre'),
+    path('meuperfil', views.perfil, name='meu-perfil'),
     #path('accounts/profile', views.PerfilDetailView.as_view(), name='profile'),    
 
     path('item/create/', views.ItemCreate.as_view(), name='item_create'),
