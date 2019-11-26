@@ -128,3 +128,5 @@ MEDIA_URL = '/media/'
 
 # Redirect to home URL after login 
 LOGIN_REDIRECT_URL = '/borrows/sobre'
+
+LOGOUT_REDIRECT_URL = 'index'
