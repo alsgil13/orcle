@@ -40,7 +40,7 @@ class Item(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome do objeto')
     autor = models.CharField(max_length=200, help_text='Digite o nome do autor, cantor, banda, criador, marca etc...')
     descricao = models.TextField(max_length=1000, help_text='Insirta uma breve descrição do objeto')
-    dono = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    dono = models.ForeignKey(User, on_delete=models.CASCADE)
     tipo = models.ForeignKey('TipoItem', on_delete=models.SET_NULL, null=True)
     foto = models.ImageField(upload_to = 'item_pics', default = 'item_pics/no-image-item.png')
     LOAN_STATUS = (

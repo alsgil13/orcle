@@ -40,15 +40,26 @@ from django.urls import reverse_lazy
 #         model = Item
 #         fields = ['nome, autor, descricao, dono, tipo, foto, status']
 
+
+# CRUD Genérico do Django
 class ItemCreate(CreateView):
     model = Item
-    fields = ['nome', 'autor', 'descricao', 'tipo', 'foto', 'status', 'dono']
-    success_url = reverse_lazy('itens')    
-    
+    fields = ['nome', 'autor', 'descricao', 'tipo', 'foto', 'status']
+    success_url = reverse_lazy('itens')   
+    # def get_usuario(self, form):
+    #     form.instance.user = self.request.user
+    #     return form.instance.user
+    def form_valid(self, form):
+        form.instance.dono = self.request.user
+        #initial = {'dono':form.instance.created_by}
+        return super().form_valid(form)
+
+
+
 
 class ItemUpdate(UpdateView):
     model = Item
-    fields = ['nome', 'autor', 'descricao', 'dono', 'tipo', 'foto', 'status']
+    fields = ['nome', 'autor', 'descricao', 'tipo', 'foto', 'status']
     success_url = reverse_lazy('itens')   
 
 

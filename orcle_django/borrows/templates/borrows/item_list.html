@@ -22,7 +22,7 @@
                     <a href="/borrows/item/{{ item.id }}" >
                         <p class="nome_item">   {{ item }}</p>
                         <p class="dono_item"> 
-                            Pertence a:  {{ item.dono.user.first_name }} {{ item.dono.user.last_name }} <br>
+                            Pertence a:  {{ item.dono.first_name }} {{ item.dono.last_name }} <br>
                             Status: <span class="{% if item.status == 'd' %}text-success{% elif item.status == 'i' %}text-danger{% else %}text-warning{% endif %}">{{ item.get_status_display }}</span>
                         </p>
 
