@@ -17,7 +17,12 @@ from django.views import generic
 
 
 class ItemListView(LoginRequiredMixin, generic.ListView):
-    model = Item    
+    model = Item   
+    paginate_by = 3 
+
+class TipoItemListView(LoginRequiredMixin, generic.ListView):
+    model = TipoItem
+    paginate_by = 4  
 
 class ItemDetailView(LoginRequiredMixin, generic.DetailView):
     model = Item    
@@ -42,20 +47,15 @@ from django.urls import reverse_lazy
 
 
 # CRUD Genérico do Django
+# --------------- Item ----------------------------------
 class ItemCreate(CreateView):
     model = Item
     fields = ['nome', 'autor', 'descricao', 'tipo', 'foto', 'status']
     success_url = reverse_lazy('itens')   
-    # def get_usuario(self, form):
-    #     form.instance.user = self.request.user
-    #     return form.instance.user
+
     def form_valid(self, form):
         form.instance.dono = self.request.user
-        #initial = {'dono':form.instance.created_by}
         return super().form_valid(form)
-
-
-
 
 class ItemUpdate(UpdateView):
     model = Item
@@ -66,3 +66,21 @@ class ItemUpdate(UpdateView):
 class ItemDelete(DeleteView):
     model = Item
     success_url = reverse_lazy('itens')    
+
+# --------------- TipoItem ----------------------------------
+
+class TipoItemCreate(CreateView):
+    model = TipoItem
+    fields = '__all__'
+    success_url = reverse_lazy('itens')   
+
+class TipoItemUpdate(UpdateView):
+    model = TipoItem
+    fields = '__all__'
+    success_url = reverse_lazy('itens')   
+
+
+class TipoItemDelete(DeleteView):
+    model = TipoItem
+    success_url = reverse_lazy('itens')    
+
