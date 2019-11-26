@@ -20,7 +20,7 @@ class Profile(models.Model):
     cidade = models.CharField(max_length=200)
     estado = models.CharField(max_length=2)
     pais = models.CharField(max_length=50)
-    foto = models.ImageField(upload_to = 'media/profile_pics/', default = 'media/profile_pics/no-image-icon.png')
+    foto = models.ImageField(upload_to = 'profile_pics', default = 'profile_pics/no-image-icon.png')
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.user.first_name} {self.user.last_name}'   

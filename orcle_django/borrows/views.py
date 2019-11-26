@@ -28,10 +28,8 @@ def signup(request):
             user.profile.estado = r.json()['uf']
             user.profile.pais = 'Brasil'
             #Usar requests para pegar cidade estado e pais
-
-
-
             user.save()
+            user.profile.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
@@ -53,7 +51,18 @@ def sobre(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'sobre.html')
 
+# --------------- Perfil ----------------------------------
 
+
+class PerfilUpdate(UpdateView):
+    model = Profile
+    fields = ['dt_nasc','cep','cidade','estado','pais','foto']
+    success_url = reverse_lazy('itens')   
+
+
+class PerfilDelete(DeleteView):
+    model = Profile
+    success_url = reverse_lazy('itens')    
 
 @login_required
 def perfil(request):
@@ -165,15 +174,26 @@ class TipoItemDelete(DeleteView):
     model = TipoItem
     success_url = reverse_lazy('itens')    
 
-# --------------- Perfil ----------------------------------
 
 
-class PerfilUpdate(UpdateView):
-    model = Profile
-    fields = ['dt_nasc','cep','cidade','estado','pais','foto']
-    success_url = reverse_lazy('itens')   
 
 
-class PerfilDelete(DeleteView):
-    model = Profile
-    success_url = reverse_lazy('itens')    
+#Servir arquivo
+
+import tarfile
+from io import BytesIO
+
+
+# def serve_file(request):
+#     out = BytesIO()
+#     tar = tarfile.open(mode = "w:gz", fileobj = out)
+#     data = 'lala'.encode('utf-8')
+#     file = BytesIO(data)
+#     info = tarfile.TarInfo(name="1.txt")
+#     info.size = len(data)
+#     tar.addfile(tarinfo=info, fileobj=file)
+#     tar.close()
+
+#     response = HttpResponse(out.getvalue(), content_type='application/tgz')
+#     response['Content-Disposition'] = 'attachment; filename=myfile.tgz'
+#     return response
