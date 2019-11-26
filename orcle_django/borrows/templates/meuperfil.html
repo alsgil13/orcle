@@ -10,9 +10,10 @@
         <div class="container">
                 <div class="profile-info">
                     <img class="profilepic" src="{{ foto }}">
-                    <input type="button" class="mybutton" value="Editar Perfil">
+                    <a href="/borrows/perfil/{{ id }}/update/"><input type="button" class="mybutton" value="Editar Perfil"></a>
                     <p class=" textoprofile text-left"><b>Nome:</b> {{ nome }}</p>
                     <p class=" textoprofile text-left"><b>Data de Nascimento:</b> {{dt_nasc}}</p>
+                    <p class=" textoprofile text-left"><b>Cidade:</b> {{cidade}}/{{estado}}</p>
                     <!-- <p class=" textoprofile text-left"><b>Membro desde:</b> 12/11/2019</p>
                     <p class=" textoprofile text-left"><b>Itens para empréstimo:</b> 13 itens</p>
                     <p class=" textoprofile text-left"><b>Emprestou:</b> 10 vezes</p>
@@ -23,6 +24,8 @@
                     <!-- <input type="button" class="mybutton" value="Meus Itens">
                     <br>       
                     <input type="button" class="mybutton" value="Itens de Amigos">                 -->
+                
+                    <a href="/borrows/perfil/{{ id }}/delete/"><input type="button" class="btn btn-danger btn-block" value="Excluir Conta"></a>
                 </div>
                 <div class="happen">
 

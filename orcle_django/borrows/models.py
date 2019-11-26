@@ -15,7 +15,7 @@ class TipoItem(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, primary_key=True)
-    dt_nasc = models.DateField()
+    dt_nasc = models.DateField(null=True, blank=True)
     cep = models.CharField(max_length=8, help_text='Digite o CEP do seu endereço')
     cidade = models.CharField(max_length=200)
     estado = models.CharField(max_length=2)
@@ -31,9 +31,11 @@ class Profile(models.Model):
 #     if created:
 #         Profile.objects.create(user=instance)
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
 
 
 class Item(models.Model):
