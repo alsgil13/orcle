@@ -16,6 +16,15 @@ def sobre(request):
 from django.views import generic
 
 
+
+class MeusItensListView(LoginRequiredMixin, generic.ListView):
+    model = Item   
+    paginate_by = 3
+    def get_queryset(self):
+        return Item.objects.filter(dono=self.request.user)
+    template_name = 'borrows/meusitens_list.html'
+
+
 class ItemListView(LoginRequiredMixin, generic.ListView):
     model = Item   
     paginate_by = 3 

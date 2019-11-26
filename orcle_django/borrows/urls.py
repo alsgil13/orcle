@@ -19,5 +19,6 @@ urlpatterns = [
     path('tipoitem/<int:pk>/delete/', views.TipoItemDelete.as_view(), name='tipoitem_delete'),
 
     path('tipoitem/', views.TipoItemListView.as_view(), name='tipoitem'),
+    path('meusitens/', views.MeusItensListView.as_view(), name='tipoitem'),
 
 ]
