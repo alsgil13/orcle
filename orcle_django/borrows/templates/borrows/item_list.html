@@ -16,7 +16,7 @@
   <ul>
     {% for item in item_list %}
       <li>
-          <div class="row ">
+          <div class="row item_contenedor">
                 <div class="col  item_contenedor">
                     <img class="item_pic" src="{{ item.foto.url }}">
                     <a href="/borrows/item/{{ item.id }}" >
@@ -27,10 +27,15 @@
                         </p>
 
                     </a>
+  
                     <!-- <a href="/borrows/item/{{item.id}}/update"><button class="btn btn-warning">Alterar</button></a>
                     <a href="/borrows/item/{{item.id}}/delete"><button class="btn btn-danger">Excluir</button></a> -->
                 </div>
-
+                {% if item.status == 'd' %}
+                <div class="col  item_contenedor">
+                  <a href=""><button class="btn btn-primary float-right">Pedir Emprestado</button></a>
+                </div>
+                {% endif %}
           </div>
       </li>
     {% endfor %}

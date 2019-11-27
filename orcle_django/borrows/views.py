@@ -178,10 +178,15 @@ class TipoItemDelete(DeleteView):
 
 
 
+
+
+
+
+
 #Servir arquivo
 
-import tarfile
-from io import BytesIO
+# import tarfile
+# from io import BytesIO
 
 
 # def serve_file(request):

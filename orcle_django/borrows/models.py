@@ -76,6 +76,6 @@ class Emprestimo(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return f'{self.item.dono.user.first_name} {self.item.dono.user.last_name} emprestou o {self.item} para {self.pessoa.user.first_name} {self.pessoa.user.last_name}'
+        return f'{self.item.dono.first_name} {self.item.dono.last_name} emprestou o {self.item} para {self.pessoa.user.first_name} {self.pessoa.user.last_name}'
 
 
