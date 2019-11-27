@@ -279,3 +279,83 @@ def download(request):
     zf.writestr(NOME, itemlist)
     response['Content-Disposition'] = f'attachment; filename={ZIPFILE_NAME}'
     return response
+
+
+
+def downloadALL(request):
+    import zipfile
+    from django.http import HttpResponse
+
+    #Itens
+    NOME_ITENS = 'itens.json'
+    itens = Item.objects.all()
+    itemlist = '{'
+    for i in itens:
+        novoitem = '{'+str(i.id) + ":{\n"
+        novoitem += "\tnome :" + "'"+ str(i.nome) + "',\n"
+        novoitem += "\tautor :" + "'"+ str(i.autor) + "',\n"
+        novoitem += "\tdescricao :" + "'"+ str(i.descricao) + "',\n"
+        novoitem += "\tdono :" + "'"+ str(i.dono) + "',\n"
+        novoitem += "\ttipo :" + "'"+ str(i.tipo) + "',\n"
+        novoitem += "\tfoto :" + "'"+ str(i.foto.url) + "',\n"
+        novoitem += "\tstatus :" + "'"+ str(i.status) + "',\n"
+        novoitem += "\tdtCadastro :" + str(i.dtCadastro) + "\n\t},\n"
+        itemlist += novoitem    
+    itemlist = itemlist[0:-2]
+    itemlist += '\n}'
+    
+    #Perfis
+    NOME_USUARIOS = 'users.json'
+    usuarios = Profile.objects.all()
+    usuariolist = '{'
+    for u in usuarios:
+        novousuario = '{'+str(u.user.id) + ":{\n"
+        novousuario += "\tdt_nasc :" + "'"+ str(u.dt_nasc) + "',\n"
+        novousuario += "\tcep :" + str(u.cep) + ",\n"
+        novousuario += "\tcidade :" + "'"+ str(u.cidade) + "',\n"
+        novousuario += "\testado :" + "'"+ str(u.estado) + "',\n"
+        novousuario += "\tpais :" + "'"+ str(u.pais) + "',\n"
+        novousuario += "\tfoto :" + "'"+ str(u.foto.url) + "\n\t},\n"
+        usuariolist += novousuario    
+    usuariolist = usuariolist[0:-2]
+    usuariolist += '\n}'
+    
+    #Tipos de Item
+    NOME_TIPOS = 'tipos.json'
+    tipos = TipoItem.objects.all()
+    tipolist = '{'
+    for t in tipos:
+        novotipo = '{'+str(t.id) + ":{\n"
+        novotipo += "\tnome :" + "'"+ str(t.nome) + "',\n"
+        novotipo += "\tdescrcao :" + "'"+ str(t.descricao) + "\n\t},\n"
+        tipolist += novotipo    
+    tipolist = tipolist[0:-2]
+    tipolist += '\n}'
+
+    #empréstimos
+    NOME_EMPRESTIMOS = 'emprestimos.json'
+    emprestimos = Emprestimo.objects.all()
+    emprestimolist = '{'
+    for e in emprestimos:
+        novoemprestimo = str(e.id) + ":{\n"
+        novoemprestimo += "\tdtEmprestimo :" + str(e.dtEmprestimo) + ",\n"
+        novoemprestimo += "\titem :" + "'"+ str(e.item.id) + "',\n"
+        novoemprestimo += "\tpessoa :" + "'"+ str(e.pessoa) + "',\n"
+        novoemprestimo += "\tdtDevolucao :" + str(e.dtDevolucao) + ",\n"
+        novoemprestimo += "\taberto :" + "'"+ str(e.aberto) + "',\n"
+        novoemprestimo += "\tdtCadastro :" + str(e.dtCadastro) + "\n\t},\n"
+        emprestimolist += novoemprestimo    
+    emprestimolist = emprestimolist[0:-2]
+    emprestimolist += '\n}'
+
+    ZIPFILE_NAME = 'orcle_backup.zip'
+
+    response = HttpResponse(content_type='application/zip')
+    zf = zipfile.ZipFile(response, 'w')
+    zf.writestr(NOME_ITENS, itemlist)
+    zf.writestr(NOME_USUARIOS, usuariolist)
+    zf.writestr(NOME_TIPOS, tipolist)
+    zf.writestr(NOME_EMPRESTIMOS, emprestimolist)
+
+    response['Content-Disposition'] = f'attachment; filename={ZIPFILE_NAME}'
+    return response    

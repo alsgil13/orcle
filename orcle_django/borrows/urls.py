@@ -35,5 +35,6 @@ urlpatterns = [
     path('emprestimo/<int:pk>/delete/', views.EmprestimoDelete.as_view(), name='emprestimo_delete'),
 
     path('download/', views.download, name='download'),
+    path('download_all/', views.downloadALL, name='download_all'),
 
 ]
