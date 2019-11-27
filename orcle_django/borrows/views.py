@@ -199,6 +199,7 @@ class EmprestimoCreate(CreateView):
     
     def form_valid(self, form):
         form.instance.pessoa = self.request.user
+        form.instance.aberto = True
         i = Item.objects.get(pk=self.request.GET['item'])
         form.instance.item = i
         return super().form_valid(form)

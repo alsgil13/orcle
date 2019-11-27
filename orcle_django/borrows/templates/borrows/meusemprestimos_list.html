@@ -24,7 +24,8 @@
                         </p>
                 </div>
                 <div class="col item_contenedor">
-                        <a href="/borrows/emprestimo/{{e.id}}/update"><button class="btn btn-primary float-right">
+                    {% if e.aberto == True%}
+                    <a href="/borrows/emprestimo/{{e.id}}/update"><button class="btn btn-primary float-right">
                            {% if e.dtDevolucao == Null%} 
                             
                             Confirmar
@@ -36,12 +37,13 @@
                             {% endif %}
                         
                         </button></a>
-                        {% if e.item.status == 'e' %}
+                        {% if e.item.status == 'e'%}
                         <a href="/borrows/emprestimo/{{e.id}}/delete">
                         <button class="btn btn-secondary float-right">Cadastrar Devolução</button>
                         </a>
                         {% endif %}
-
+    
+                    {% endif %}
                 </div>
 
           </div>
