@@ -67,7 +67,7 @@
 <ul>
 <li>Login: em que o usuário deverá fornecer um nome de usuário e uma senha. O acesso as funcionalidades do sistema ocorrem apenas para usuários previamente cadastrados.</li>
 <li>Sobre: que apresente dados do projeto {tema escolhido e objetivo} e dos desenvolvedores: {nome completo e código de matrícula}.</li>
-<li>Menu: em que o usuário poderá escolher a opção desejada da aplicação.<li>
+<li>Menu: em que o usuário poderá escolher a opção desejada da aplicação.</li>
 </ul></p>
 <p>Todas as UI citadas foram implementadas, o menu não foi implementada em uma url específica, mas sim em um componente HTML que é iportado em todas as UIs em que o usuário acessa após logar-se</p>
 <strong><p>Implementar uma funcionalidade que exporta todos os dados da aplicação no formato JSON. O arquivo deve ser compactado no formato zip.</p></strong>
