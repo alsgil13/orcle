@@ -27,6 +27,11 @@ urlpatterns = [
 
     path('tipoitem/', views.TipoItemListView.as_view(), name='tipoitem'),
     path('meusitens/', views.MeusItensListView.as_view(), name='tipoitem'),
+    path('meusemprestimos/', views.MeusEmprestimosListView.as_view(), name='meusemprestimos'),
 
+
+    path('emprestimo/create/', views.EmprestimoCreate.as_view(), name='emprestimo_create'),
+    path('emprestimo/<int:pk>/update/', views.EmprestimoUpdate.as_view(), name='emprestimo_update'),
+    path('emprestimo/<int:pk>/delete/', views.EmprestimoDelete.as_view(), name='emprestimo_delete'),
 
 ]

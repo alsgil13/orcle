@@ -178,6 +178,56 @@ class TipoItemDelete(DeleteView):
 
 
 
+# --------------- Empréstimo ----------------------------------
+
+
+class MeusEmprestimosListView(LoginRequiredMixin, generic.ListView):
+    model = Emprestimo   
+    #paginate_by = 3
+    def get_queryset(self):
+        usuario = self.request.user
+        return Emprestimo.objects.filter(item__dono=usuario)
+        #return Emprestimo.objects.all().filter(dono=usuario)
+    template_name = 'borrows/meusemprestimos_list.html'
+
+
+class EmprestimoCreate(CreateView):
+    model = Emprestimo
+    fields = ['dtEmprestimo']
+    labels = {'dtEmprestimo' : ('Insira a data que pretende buscar o item')}
+    success_url = reverse_lazy('itens')   
+    
+    def form_valid(self, form):
+        form.instance.pessoa = self.request.user
+        i = Item.objects.get(pk=self.request.GET['item'])
+        form.instance.item = i
+        return super().form_valid(form)
+
+
+
+class EmprestimoUpdate(UpdateView):
+    model = Emprestimo
+    fields = ['dtDevolucao']
+    success_url = reverse_lazy('itens')
+    def form_valid(self, form):
+        form.instance.aberto = True
+        i = Item.objects.get(pk=form.instance.item.id)
+        i.status = 'e'
+        i.save()
+        return super().form_valid(form)   
+
+
+class EmprestimoDelete(UpdateView):
+    model = Emprestimo
+    fields = ['dtDevolucao']
+    success_url = reverse_lazy('itens') 
+    
+    def form_valid(self, form):
+        form.instance.aberto = False
+        i = Item.objects.get(pk=form.instance.item.id)
+        i.status = 'd'
+        i.save()
+        return super().form_valid(form)   
 
 
 

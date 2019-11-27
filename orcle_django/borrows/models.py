@@ -66,9 +66,9 @@ class Item(models.Model):
 class Emprestimo(models.Model):
     dtEmprestimo = models.DateField()
     item = models.ForeignKey('Item', on_delete=models.CASCADE)
-    pessoa = models.ForeignKey('Profile', on_delete=models.CASCADE)
-    dtDevolucao = models.DateField()
-    aberto = models.BooleanField()
+    pessoa = models.ForeignKey(User, on_delete=models.CASCADE)
+    dtDevolucao = models.DateField(null=True)
+    aberto = models.BooleanField(null=True)
     dtCadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -76,6 +76,6 @@ class Emprestimo(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return f'{self.item.dono.first_name} {self.item.dono.last_name} emprestou o {self.item} para {self.pessoa.user.first_name} {self.pessoa.user.last_name}'
+        return f'{self.item.dono.first_name} {self.item.dono.last_name} emprestou o {self.item} para {self.pessoa.first_name} {self.pessoa.last_name}'
 
 
