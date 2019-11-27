@@ -253,3 +253,29 @@ class EmprestimoDelete(UpdateView):
 #     response = HttpResponse(out.getvalue(), content_type='application/tgz')
 #     response['Content-Disposition'] = 'attachment; filename=myfile.tgz'
 #     return response
+
+
+
+
+
+
+def download(request):
+    import zipfile
+    from django.http import HttpResponse
+#Define dados do arquivo
+    NOME = 'backup.json'
+    itens = Item.objects.filter(dono = request.user)
+    itemlist = '{'
+    for i in itens:
+        itemlist += "'"+str(i.id)+"'" + " : " + "'"+str(i)+"'" + ",\n"
+    itemlist = itemlist[0:-3]
+    itemlist += '}'
+    ZIPFILE_NAME = 'orcle_meusitens.zip'
+
+
+
+    response = HttpResponse(content_type='application/zip')
+    zf = zipfile.ZipFile(response, 'w')
+    zf.writestr(NOME, itemlist)
+    response['Content-Disposition'] = f'attachment; filename={ZIPFILE_NAME}'
+    return response
