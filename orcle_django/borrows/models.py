@@ -8,14 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 class TipoItem(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome tipo de objeto')
-    descricao = models.TextField(max_length=1000, help_text='Insirta uma breve descrição do objeto')
+    descricao = models.TextField("Descrição",max_length=1000, help_text='Insira uma breve descrição do tipo de objeto')
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.nome}'    
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, primary_key=True)
-    dt_nasc = models.DateField(null=True, blank=True)
+    dt_nasc = models.DateField("Data de Nascimento",null=True, blank=True)
     cep = models.CharField(max_length=8, help_text='Digite o CEP do seu endereço')
     cidade = models.CharField(max_length=200)
     estado = models.CharField(max_length=2)
@@ -41,9 +41,9 @@ def update_user_profile(sender, instance, created, **kwargs):
 class Item(models.Model):
     nome = models.CharField(max_length=200, help_text='Digite o nome do objeto')
     autor = models.CharField(max_length=200, help_text='Digite o nome do autor, cantor, banda, criador, marca etc...')
-    descricao = models.TextField(max_length=1000, help_text='Insirta uma breve descrição do objeto')
+    descricao = models.TextField("Descrição",max_length=1000, help_text='Insirta uma breve descrição do objeto')
     dono = models.ForeignKey(User, on_delete=models.CASCADE)
-    tipo = models.ForeignKey('TipoItem', on_delete=models.SET_NULL, null=True)
+    tipo = models.ForeignKey('TipoItem', on_delete=models.SET_NULL, null=True, help_text='Selecione o tipo de objeto')
     foto = models.ImageField(upload_to = 'item_pics', default = 'item_pics/no-image-item.png')
     LOAN_STATUS = (
         ('e', 'Emprestado'),
@@ -56,7 +56,7 @@ class Item(models.Model):
         default='d',
         help_text='Status do item',
     )
-    dtCadastro = models.DateTimeField(auto_now_add=True)
+    dtCadastro = models.DateTimeField("Cadastrado em",auto_now_add=True)
 
     def __str__(self):
         """String for representing the Model object."""
@@ -69,7 +69,7 @@ class Emprestimo(models.Model):
     pessoa = models.ForeignKey(User, on_delete=models.CASCADE)
     dtDevolucao = models.DateField("Data da Devolução",null=True)
     aberto = models.BooleanField(null=True)
-    dtCadastro = models.DateTimeField(auto_now_add=True)
+    dtCadastro = models.DateTimeField("Cadastrado em",auto_now_add=True)
 
     class Meta:
         ordering = ['-aberto','-dtEmprestimo']

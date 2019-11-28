@@ -10,8 +10,8 @@ from django.contrib.auth.models import User
 
 
 class SignUpForm(UserCreationForm):
-    dt_nasc = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
-    cep = forms.DecimalField(decimal_places=8)
+    dt_nasc = forms.DateField(label="Data de Nascimento",help_text='Required. Format: YYYY-MM-DD')
+    cep = forms.CharField(max_length=8)
 
     class Meta:
         model = User

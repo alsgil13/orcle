@@ -196,7 +196,6 @@ class MeusEmprestimosListView(LoginRequiredMixin, generic.ListView):
 class EmprestimoCreate(LoginRequiredMixin,CreateView):
     model = Emprestimo
     fields = ['dtEmprestimo']
-    labels = {'dtEmprestimo': _('Data do Empréstimo')}
     dtEmprestimo = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     success_url = reverse_lazy('itens')   
     
