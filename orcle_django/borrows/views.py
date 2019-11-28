@@ -363,3 +363,8 @@ def downloadALL(request):
 
     response['Content-Disposition'] = f'attachment; filename={ZIPFILE_NAME}'
     return response    
+
+def ari_mazer(request):
+    """Página Inicial do site."""
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'ari_mazer.html')    

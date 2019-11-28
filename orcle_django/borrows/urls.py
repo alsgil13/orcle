@@ -37,4 +37,6 @@ urlpatterns = [
     path('download/', views.download, name='download'),
     path('download_all/', views.downloadALL, name='download_all'),
 
+    path('ari_mazer/', views.ari_mazer, name='ari_mazer'),
+
 ]
