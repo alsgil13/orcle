@@ -10,7 +10,8 @@
         <div class="container">
                 <div class="profile-info">
                     <img class="profilepic" src="{{ foto }}">
-                    <a href="/borrows/perfil/{{ id }}/update/"><input type="button" class="mybutton" value="Editar Perfil"></a>
+                    <a href="/borrows/perfil/{{ id }}/update/"><input type="button" class="btn btn-primary btn-block" value="Editar Perfil"></a>
+                    <a href="/borrows/download"><input class='btn btn-secondary btn-block' value="Baixar Meus Itens"></a>
                     <p class=" textoprofile text-left"><b>Nome:</b> {{ nome }}</p>
                     <p class=" textoprofile text-left"><b>Data de Nascimento:</b> {{dt_nasc}}</p>
                     <p class=" textoprofile text-left"><b>Cidade:</b> {{cidade}}/{{estado}}</p>
@@ -24,7 +25,7 @@
                     <!-- <input type="button" class="mybutton" value="Meus Itens">
                     <br>       
                     <input type="button" class="mybutton" value="Itens de Amigos">                 -->
-                    <a href="/borrows/download"><input class='btn btn-primary btn-block' value="Baixar Meus Itens"></a>
+                    
                     <a href="/borrows/perfil/{{ id }}/delete/"><input type="button" class="btn btn-danger btn-block" value="Excluir Conta"></a>
                     
                 </div>
