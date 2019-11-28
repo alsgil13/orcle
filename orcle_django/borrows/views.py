@@ -5,11 +5,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.views import generic
-
+from orcle_django import settings
 from borrows.forms import SignUpForm
 
 from django.contrib.auth import login, authenticate
-
+from django import forms
 import requests
 
 
@@ -46,6 +46,7 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html')
 
+@login_required
 def sobre(request):
     
     # Render the HTML template index.html with the data in the context variable
@@ -54,13 +55,13 @@ def sobre(request):
 # --------------- Perfil ----------------------------------
 
 
-class PerfilUpdate(UpdateView):
+class PerfilUpdate(LoginRequiredMixin,UpdateView):
     model = Profile
     fields = ['dt_nasc','cep','cidade','estado','pais','foto']
     success_url = reverse_lazy('itens')   
 
 
-class PerfilDelete(DeleteView):
+class PerfilDelete(LoginRequiredMixin,DeleteView):
     model = Profile
     success_url = reverse_lazy('itens')    
 
@@ -119,7 +120,8 @@ class ItemDetailView(LoginRequiredMixin, generic.DetailView):
     model = Item    
 
 class PessoaListView(LoginRequiredMixin, generic.ListView):
-    model = Profile    
+    model = Profile
+    paginate_by = 3    
 
 class PessoaDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile        
@@ -138,7 +140,7 @@ class PessoaDetailView(LoginRequiredMixin, generic.DetailView):
 
 # CRUD Genérico do Django
 # --------------- Item ----------------------------------
-class ItemCreate(CreateView):
+class ItemCreate(LoginRequiredMixin,CreateView):
     model = Item
     fields = ['nome', 'autor', 'descricao', 'tipo', 'foto', 'status']
     success_url = reverse_lazy('itens')   
@@ -147,30 +149,30 @@ class ItemCreate(CreateView):
         form.instance.dono = self.request.user
         return super().form_valid(form)
 
-class ItemUpdate(UpdateView):
+class ItemUpdate(LoginRequiredMixin,UpdateView):
     model = Item
     fields = ['nome', 'autor', 'descricao', 'tipo', 'foto', 'status']
     success_url = reverse_lazy('itens')   
 
 
-class ItemDelete(DeleteView):
+class ItemDelete(LoginRequiredMixin,DeleteView):
     model = Item
     success_url = reverse_lazy('itens')    
 
 # --------------- TipoItem ----------------------------------
 
-class TipoItemCreate(CreateView):
+class TipoItemCreate(LoginRequiredMixin,CreateView):
     model = TipoItem
     fields = '__all__'
     success_url = reverse_lazy('itens')   
 
-class TipoItemUpdate(UpdateView):
+class TipoItemUpdate(LoginRequiredMixin,UpdateView):
     model = TipoItem
     fields = '__all__'
     success_url = reverse_lazy('itens')   
 
 
-class TipoItemDelete(DeleteView):
+class TipoItemDelete(LoginRequiredMixin,DeleteView):
     model = TipoItem
     success_url = reverse_lazy('itens')    
 
@@ -183,7 +185,7 @@ class TipoItemDelete(DeleteView):
 
 class MeusEmprestimosListView(LoginRequiredMixin, generic.ListView):
     model = Emprestimo   
-    #paginate_by = 3
+    paginate_by = 4
     def get_queryset(self):
         usuario = self.request.user
         return Emprestimo.objects.filter(item__dono=usuario)
@@ -191,10 +193,22 @@ class MeusEmprestimosListView(LoginRequiredMixin, generic.ListView):
     template_name = 'borrows/meusemprestimos_list.html'
 
 
-class EmprestimoCreate(CreateView):
+class EmprestimoCreate(LoginRequiredMixin,CreateView):
     model = Emprestimo
     fields = ['dtEmprestimo']
-    labels = {'dtEmprestimo' : ('Insira a data que pretende buscar o item')}
+    
+    
+    #labels = {'dtEmprestimo' : ('Insira a data que pretende buscar o item')}
+    class Meta:
+        labels = {
+            'dtEmprestimo': ('Insira a data que pretende buscar o item'),
+        }
+    
+    dtEmprestimo = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    # dtEmprestimo = forms.DateField(
+    #     widget=forms.DateInput(format='%d/%m/%Y'),
+    #     input_formats=('%d/%m/%Y', )
+    # )
     success_url = reverse_lazy('itens')   
     
     def form_valid(self, form):
@@ -206,9 +220,10 @@ class EmprestimoCreate(CreateView):
 
 
 
-class EmprestimoUpdate(UpdateView):
+class EmprestimoUpdate(LoginRequiredMixin,UpdateView):
     model = Emprestimo
     fields = ['dtDevolucao']
+    dtDevolucao = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     success_url = reverse_lazy('itens')
     def form_valid(self, form):
         form.instance.aberto = True
@@ -218,9 +233,10 @@ class EmprestimoUpdate(UpdateView):
         return super().form_valid(form)   
 
 
-class EmprestimoDelete(UpdateView):
+class EmprestimoDelete(LoginRequiredMixin,UpdateView):
     model = Emprestimo
     fields = ['dtDevolucao']
+    dtDevolucao = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     success_url = reverse_lazy('itens') 
     
     def form_valid(self, form):
@@ -258,7 +274,7 @@ class EmprestimoDelete(UpdateView):
 
 
 
-
+@login_required
 def download(request):
     import zipfile
     from django.http import HttpResponse
@@ -281,7 +297,7 @@ def download(request):
     return response
 
 
-
+@login_required
 def downloadALL(request):
     import zipfile
     from django.http import HttpResponse

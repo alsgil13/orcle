@@ -30,5 +30,20 @@
   </ul>
   {% else %}
     <p>Nenhum Perfil disponível.</p>
-  {% endif %}       
+  {% endif %}
+  {% if is_paginated %}
+  <div class="pagination">
+      <span class="page-links">
+          {% if page_obj.has_previous %}
+              <strong><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"><span class="seta-pag">&#8592</span></a></strong>
+          {% endif %}
+          <span class="page-current">
+              <sup>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</sup>
+          </span>
+          {% if page_obj.has_next %}
+        <strong><a href="{{ request.path }}?page={{ page_obj.next_page_number }}"><span class="seta-pag">&#8594</span></a></strong>
+          {% endif %}
+      </span>
+  </div>
+  {% endif %}      
 {% endblock %}

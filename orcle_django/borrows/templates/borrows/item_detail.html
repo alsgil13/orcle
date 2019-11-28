@@ -17,7 +17,7 @@
 
         <p><strong>Título: </strong>{{ item.nome }}</p>
         <p><strong>Autor:</strong> {{ item.autor }}</p> 
-        <p><strong>Dono:</strong> {{ item.dono.user.first_name }} {{ item.dono.user.last_name }}</p> 
+        <p><strong>Dono:</strong> {{ item.dono.first_name }} {{ item.dono.last_name }}</p> 
     
     </div>
 </div>
@@ -29,7 +29,7 @@
             
                 {% for e in item.emprestimo_set.all %}
                   <hr>
-                  <i><p class="">{{ e.pessoa.user.first_name }} {{ e.pessoa.user.last_name }} em {{ e.dtCadastro }}</p></i>
+                  <i><p class="">Emprestado para {{ e.pessoa.first_name }} {{ e.pessoa.last_name }} em {{ e.dtEmprestimo }}</p></i>
                 {% endfor %}
               </div>
 </div>

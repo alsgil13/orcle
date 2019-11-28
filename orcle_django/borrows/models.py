@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from orcle_django import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -72,7 +72,7 @@ class Emprestimo(models.Model):
     dtCadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['dtCadastro']
+        ordering = ['-aberto','-dtEmprestimo']
 
     def __str__(self):
         """String for representing the Model object."""

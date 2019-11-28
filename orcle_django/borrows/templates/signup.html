@@ -1,14 +1,12 @@
 {% extends "base_generic.html" %}
-
-{% block menu %}
-  {% include "menu-bootstrap.html" %}
-{% endblock %}
-
+{% load bootstrap %}
 {% block content %}
-  <h2>Sign up</h2>
+  <h2 class="row justify-content-center">Criar Conta</h2>
+  <div class="row justify-content-center">
   <form method="post">
     {% csrf_token %}
-    {% for field in form %}
+    {{ form|bootstrap }}
+    <!-- {% for field in form %}
       <p>
         {{ field.label_tag }}<br>
         {{ field }}
@@ -19,8 +17,9 @@
           <p style="color: red">{{ error }}</p>
         {% endfor %}
       </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
+    {% endfor %} -->
+    <button type="submit" class="btn btn-success btn-block">Criar Conta</button>
   </form>
+  </div>
 {% endblock %}
 
