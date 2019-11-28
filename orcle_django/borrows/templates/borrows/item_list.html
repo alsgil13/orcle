@@ -23,7 +23,7 @@
                         <p class="nome_item">   {{ item }}</p>
                         <p class="dono_item"> 
                             Pertence a:  {{ item.dono.first_name }} {{ item.dono.last_name }} <br>
-                            Status: <span class="{% if item.status == 'd' %}text-success{% elif item.status == 'i' %}text-danger{% else %}text-warning{% endif %}">{{ item.get_status_display }}</span>
+                            Status: <span class="{% if item.status == 'd' %}disponivel{% elif item.status == 'i' %}indisponivel{% else %}emprestado{% endif %}">{{ item.get_status_display }}</span>
                         </p>
 
                     </a>
