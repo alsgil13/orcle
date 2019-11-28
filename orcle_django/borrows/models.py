@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from orcle_django import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 class TipoItem(models.Model):
@@ -64,10 +64,10 @@ class Item(models.Model):
 
 
 class Emprestimo(models.Model):
-    dtEmprestimo = models.DateField()
+    dtEmprestimo = models.DateField("Data do Empréstimo")
     item = models.ForeignKey('Item', on_delete=models.CASCADE)
     pessoa = models.ForeignKey(User, on_delete=models.CASCADE)
-    dtDevolucao = models.DateField(null=True)
+    dtDevolucao = models.DateField("Data da Devolução",null=True)
     aberto = models.BooleanField(null=True)
     dtCadastro = models.DateTimeField(auto_now_add=True)
 

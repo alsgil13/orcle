@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from orcle_django import settings
 from borrows.forms import SignUpForm
-
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import login, authenticate
 from django import forms
 import requests
@@ -196,19 +196,8 @@ class MeusEmprestimosListView(LoginRequiredMixin, generic.ListView):
 class EmprestimoCreate(LoginRequiredMixin,CreateView):
     model = Emprestimo
     fields = ['dtEmprestimo']
-    
-    
-    #labels = {'dtEmprestimo' : ('Insira a data que pretende buscar o item')}
-    class Meta:
-        labels = {
-            'dtEmprestimo': ('Insira a data que pretende buscar o item'),
-        }
-    
+    labels = {'dtEmprestimo': _('Data do Empréstimo')}
     dtEmprestimo = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
-    # dtEmprestimo = forms.DateField(
-    #     widget=forms.DateInput(format='%d/%m/%Y'),
-    #     input_formats=('%d/%m/%Y', )
-    # )
     success_url = reverse_lazy('itens')   
     
     def form_valid(self, form):
