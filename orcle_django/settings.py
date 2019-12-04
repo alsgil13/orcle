@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '%_tm6=43s@m)2m@gwf&ofn8n@l&5+-
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cryptic-waters-70590.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
