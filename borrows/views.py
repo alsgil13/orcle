@@ -295,7 +295,7 @@ def downloadALL(request):
     itens = Item.objects.all()
     itemlist = '{'
     for i in itens:
-        novoitem = '{'+str(i.id) + ":{\n"
+        novoitem = str(i.id) + ":{\n"
         novoitem += "\t'nome' :" + "'"+ str(i.nome) + "',\n"
         novoitem += "\t'autor' :" + "'"+ str(i.autor) + "',\n"
         novoitem += "\t'descricao' :" + "'"+ str(i.descricao) + "',\n"
@@ -313,7 +313,7 @@ def downloadALL(request):
     usuarios = Profile.objects.all()
     usuariolist = '{'
     for u in usuarios:
-        novousuario = '{'+str(u.user.id) + ":{\n"
+        novousuario = str(u.user.id) + ":{\n"
         novousuario += "\t'dt_nasc' :" + "'"+ str(u.dt_nasc) + "',\n"
         novousuario += "\t'cep' :" + str(u.cep) + ",\n"
         novousuario += "\t'cidade' :" + "'"+ str(u.cidade) + "',\n"
@@ -329,7 +329,7 @@ def downloadALL(request):
     tipos = TipoItem.objects.all()
     tipolist = '{'
     for t in tipos:
-        novotipo = '{'+str(t.id) + ":{\n"
+        novotipo = str(t.id) + ":{\n"
         novotipo += "\t'nome' :" + "'"+ str(t.nome) + "',\n"
         novotipo += "\t'descricao' :" + "'"+ str(t.descricao) + "\n\t},\n"
         tipolist += novotipo    
